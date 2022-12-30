@@ -62,16 +62,20 @@ public class Blog {
     public void displayUserEntries(int userId){
 
         System.out.println("\n");
-        System.out.println(users.get(userId-1).getNickName() + " entries:");
-        for (Post po: posts) {
-            if (po.getAuthor().getId() == userId) {
-                System.out.println("(POST) " + po.getContent());
+        try {
+            System.out.println(users.get(userId - 1).getNickName() + " entries:");
+            for (Post po : posts) {
+                if (po.getAuthor().getId() == userId) {
+                    System.out.println("(POST) " + po.getContent());
+                }
             }
-        }
-        for (Comment co:comm) {
-            if (co.getAuthor().getId() == userId) {
-                System.out.println("(COMMENT) " + co.getContent());
+            for (Comment co : comm) {
+                if (co.getAuthor().getId() == userId) {
+                    System.out.println("(COMMENT) " + co.getContent());
+                }
             }
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("User with given userId doesnt exist");
         }
     }
 
